@@ -27,52 +27,52 @@ function controllerRouting(app) {
     UsersController.postNew(req, res);
   });
 
-  //   // should retrieve the user base on the token used
-  //   router.get('/users/me', (req, res) => {
-  //     UsersController.getMe(req, res);
-  //   });
+    //  retrieve the user base on the token used
+    router.get('/users/me', (req, res) => {
+      UsersController.getMe(req, res);
+    });
 
-  //   // Auth Controller
+    // Auth Controller
 
-  //   // should sign-in the user by generating a new authentication token
-  //   router.get('/connect', (req, res) => {
-  //     AuthController.getConnect(req, res);
-  //   });
+    // sign-in the user by generating a new authentication token
+    router.get('/connect', (req, res) => {
+      AuthController.getConnect(req, res);
+    });
 
-  //   // should sign-out the user based on the token
-  //   router.get('/disconnect', (req, res) => {
-  //     AuthController.getDisconnect(req, res);
-  //   });
+    // sign-out the user based on the token
+    router.get('/disconnect', (req, res) => {
+      AuthController.getDisconnect(req, res);
+    });
 
   //   // Files Controller
 
-  //   // should create a new file in DB and in disk
-  //   router.post('/files', (req, res) => {
-  //     FilesController.postUpload(req, res);
-  //   });
+  //   // create a new file in DB and in disk
+    router.post('/files', (req, res) => {
+      FilesController.postUpload(req, res);
+    });
 
-  //   // should retrieve the file document based on the ID
+  //   // retrieve the file document 
   //   router.get('/files/:id', (req, res) => {
   //     FilesController.getShow(req, res);
   //   });
 
-  //   // should retrieve all users file documents for a
+  //   // retrieve all users file documents for a
   //   // specific parentId and with pagination
   //   router.get('/files', (req, res) => {
   //     FilesController.getIndex(req, res);
   //   });
 
-  //   // should set isPublic to true on the file document based on the ID
+  //   // set isPublic to true on the file document based on the ID
   //   router.put('/files/:id/publish', (req, res) => {
   //     FilesController.putPublish(req, res);
   //   });
 
-  //   // should set isPublic to false on the file document based on the ID
+  //   // set isPublic to false on the file document based on the ID
   //   router.put('/files/:id/unpublish', (req, res) => {
   //     FilesController.putUnpublish(req, res);
   //   });
 
-//   // should return the content of the file document based on the ID
+//   // return the content of the file document based on the ID
 //   router.get('/files/:id/data', (req, res) => {
 //     FilesController.getFile(req, res);
 //   });
