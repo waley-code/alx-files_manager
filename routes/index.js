@@ -22,10 +22,10 @@ function controllerRouting(app) {
 
   // User Controller
 
-  //   // should create a new user in DB
-  //   router.post('/users', (req, res) => {
-  //     UsersController.postNew(req, res);
-  //   });
+    // should create a new user in DB
+    router.post('/users', (req, res) => {
+      UsersController.postNew(req, res);
+    });
 
   //   // should retrieve the user base on the token used
   //   router.get('/users/me', (req, res) => {
