@@ -46,21 +46,17 @@ function controllerRouting(app) {
 
   //   // Files Controller
 
-  //   // create a new file in DB and in disk
     router.post('/files', (req, res) => {
       FilesController.postUpload(req, res);
     });
 
-  //   // retrieve the file document 
-  //   router.get('/files/:id', (req, res) => {
-  //     FilesController.getShow(req, res);
-  //   });
-
-  //   // retrieve all users file documents for a
-  //   // specific parentId and with pagination
-  //   router.get('/files', (req, res) => {
-  //     FilesController.getIndex(req, res);
-  //   });
+    router.get('/files/:id', (req, res) => {
+      FilesController.getShow(req, res);
+    });
+   
+    router.get('/files', (req, res) => {
+      FilesController.getIndex(req, res);
+    });
 
   //   // set isPublic to true on the file document based on the ID
   //   router.put('/files/:id/publish', (req, res) => {
