@@ -1,7 +1,7 @@
-import { v4 as uuidv4 } from "uuid";
-import sha1 from "sha1";
-import redisClient from "../utils/redis";
-import userUtils from "../utils/user";
+import { v4 as uuidv4 } from 'uuid';
+import sha1 from 'sha1';
+import redisClient from '../utils/redis';
+import userUtils from '../utils/user';
 
 class AuthController {
   /**
@@ -9,22 +9,22 @@ class AuthController {
    * Return this token: { "token": "155342df-2399-41da-9e8c-458b6ac52a0c" }
    */
   static async getConnect(request, response) {
-    const Authorization = request.header("Authorization") || "";
+    const Authorization = request.header('Authorization') || '';
 
-    const credentials = Authorization.split(" ")[1];
+    const credentials = Authorization.split(' ')[1];
 
     if (!credentials) {
-      return response.status(401).send({ error: "Unauthorized" });
+      return response.status(401).send({ error: 'Unauthorized' });
     }
 
-    const decodedCredentials = Buffer.from(credentials, "base64").toString(
-      "utf-8"
+    const decodedCredentials = Buffer.from(credentials, 'base64').toString(
+      'utf-8',
     );
 
-    const [email, password] = decodedCredentials.split(":");
+    const [email, password] = decodedCredentials.split(':');
 
     if (!email || !password) {
-      return response.status(401).send({ error: "Unauthorized" });
+      return response.status(401).send({ error: 'Unauthorized' });
     }
 
     const sha1Password = sha1(password);
@@ -34,7 +34,7 @@ class AuthController {
       password: sha1Password,
     });
 
-    if (!user) return response.status(401).send({ error: "Unauthorized" });
+    if (!user) return response.status(401).send({ error: 'Unauthorized' });
 
     const token = uuidv4();
     const key = `auth_${token}`;
@@ -52,7 +52,7 @@ class AuthController {
   static async getDisconnect(request, response) {
     const { userId, key } = await userUtils.getUserIdAndKey(request);
 
-    if (!userId) return response.status(401).send({ error: "Unauthorized" });
+    if (!userId) return response.status(401).send({ error: 'Unauthorized' });
 
     await redisClient.del(key);
 
