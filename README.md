@@ -1,2 +1,2 @@
 # alx-files_manager
-Proje
+Projec
